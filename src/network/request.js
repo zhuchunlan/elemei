@@ -24,7 +24,7 @@ export function request(config){
     //方案二：不用包装，instance本身就返回promise函数
     //1.创建axios实例
     const instance = axios.create({
-        baseURL: 'http://123.207.32.32:8000',
+        baseURL: 'http://123.207.32.32:8000/api/h8/',
         timeout: 5000
     })
 
