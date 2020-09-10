@@ -41,6 +41,11 @@
             this.scroll.on('pullingUp', ()=>{
                 this.$emit("pullingUp")
             })
+        },
+        methods:{
+            scrollTo(x, y, time=300){
+                this.scroll && this.scroll.scrollTo(x, y, time)
+            }
         }
     }
 </script>
