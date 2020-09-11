@@ -1,6 +1,6 @@
 <template>
-    <div class="goods-item">
-        <img :src="goodsItem.show.img" alt="" @load="imageLoad"> 
+    <div class="goods-item" @click="itemClick">
+        <img :src="showImage" alt="" @load="imageLoad"> 
                                             <!-- @load监听图片加载完成 -->
         <div class="goods-info">
             <p>{{goodsItem.title}}</p>
@@ -21,12 +21,19 @@ export default {
             }
         }
     },
+    computed:{
+        showImage(){
+            return this.goodsItem.image || this.goodsItem.show.img
+        }
+    },
     methods:{
         imageLoad(){
             this.$bus.$emit('itemImageLoad') 
              //this.$bus事件总线  
              //要把GoodsListItem.vue中的图片加载事件传到Home.vue中，不是父子组件之间的通信，所以用事件总线
-           
+        },
+        itemClick(){
+            this.$router.push('/detail/'+ this.goodsItem.iid)
         }
     }
 }
